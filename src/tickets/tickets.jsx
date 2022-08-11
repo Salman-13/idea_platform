@@ -68,7 +68,7 @@ margin-bottom: 30px;
 };
 `
 
-function Tickets({ticket}) {
+function Tickets({ticket, currency}) {
 
     const options = {
         day: 'numeric',
@@ -94,6 +94,7 @@ function Tickets({ticket}) {
         };
         return `${number} ПЕРЕСАДКИ`
       }
+      const priceCurrency = currency === 1 ? `${ticket.price}₽`: currency === 2 ? `${ticket.price_usd}$`: `${ticket.price_eur}€`
 
     return (
       <TicketsContainer>
@@ -109,7 +110,7 @@ function Tickets({ticket}) {
             <div className="price-ticket">
                 Купить 
                 <br/> 
-                за {ticket.price}₽
+                за {priceCurrency}
             </div>
         </div>
         <div className="fight-time">
